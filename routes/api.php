@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/********** start repos route ***********/
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'repos'], function () {
+
+        /**
+         * @apiGroup           repos
+         * @apiName            all/filter repos
+         * @api                {get} /v1/filter 3-filter
+         *
+         * @apiVersion         1.0.0
+         *
+         * @apiUse             RepositoryResponse
+         */
+        Route::get('/', ['uses' => 'RepositoriesController@filter']);
+
+    });
 });
+/********** end repos route ***********/
