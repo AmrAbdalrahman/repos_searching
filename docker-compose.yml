@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  app:
+    container_name: repo-filtering-api
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: 'reposearching'
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html
